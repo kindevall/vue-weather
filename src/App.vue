@@ -3,46 +3,49 @@
     <main>
       <p>Vue Weather</p>
       <div class="search-box">
-        <input type="text" class="search-bar" placeholder="Search..." v-model="query" @keypress="fetchWeather" />
+        <input
+          type="text"
+          class="search-bar"
+          placeholder="Search..."
+          v-model="query"
+          @keypress="fetchWeather"
+        />
       </div>
       <div v-if="typeof weather_data.main != 'undefined'">
-        <div class="location-box">
-          <div>
-            {{ weather_data.name }}, {{ weather_data.sys.country }}
-          </div>
-          <div>
-            <img :src="require(`@/assets/${weather_data.weather[0].icon}@2x.png`)">
-            <div class="temp">{{ Math.round(weather_data.main.temp) }}°C</div>
-            <div class="weather">{{ weather_data.weather[0].main }}</div>
-            <div class="humidity">Humidity {{ weather_data.main.humidity }}%</div>
-          </div>
-        </div>
+        <div>{{ weather_data.name }}, {{ weather_data.sys.country }}</div>
+        <img :src="require(`@/assets/${weather_data.weather[0].icon}@2x.png`)" />
+        <div class="temp">{{ Math.round(weather_data.main.temp) }}°C</div>
+        <div class="weather">{{ weather_data.weather[0].main }}</div>
+        <div class="humidity">Humidity {{ weather_data.main.humidity }}%</div>
       </div>
     </main>
   </div>
 </template>
 
 <script>
-
 export default {
-  name: 'App',
+  name: "App",
   data() {
     return {
-      api_key: 'faaf52e17adfa7486c564efabf7d8770',
-      base_url: 'https://api.openweathermap.org/data/2.5/',
-      query: '',
+      api_key: "",
+      base_url: "https://api.openweathermap.org/data/2.5/",
+      query: "",
       weather_data: {},
     }
   },
   methods: {
     fetchWeather(e) {
       if (e.key == "Enter") {
-        const url = `${this.base_url}weather?q=${this.query}&units=metric&appid=${this.api_key}`;
+        if (this.api_key !== "") {
+        const url = `${this.base_url}weather?q=${this.query}&units=metric&appid=${this.api_key}`
         fetch(url)
           .then((response) => {
-            return response.json();
+            return response.json()
           })
-          .then(this.setWeather);
+          .then(this.setWeather)
+        } else {
+          window.alert('You need an API key')
+        }
       }
     },
     setWeather(data) {
