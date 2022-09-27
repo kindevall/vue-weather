@@ -37,14 +37,14 @@ export default {
     fetchWeather(e) {
       if (e.key == "Enter") {
         if (this.api_key !== "") {
-        const url = `${this.base_url}weather?q=${this.query}&units=metric&appid=${this.api_key}`
-        fetch(url)
-          .then((response) => {
-            return response.json()
-          })
-          .then(this.setWeather)
+          const url = `${this.base_url}weather?q=${this.query}&units=metric&appid=${this.api_key}`
+          fetch(url)
+            .then((response) => {
+              return response.json()
+            })
+            .then(this.setWeather)
         } else {
-          window.alert('You need an API key')
+          window.alert('You need an OpenWeather API key.')
         }
       }
     },
