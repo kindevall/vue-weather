@@ -1,4 +1,8 @@
-# weather-demo
+# Vue Weather
+
+A quick Vue weather application that uses the OpenWeather API.
+
+You need a personal API key for the app to work, you can get a free one [here](https://home.openweathermap.org/users/sign_up).
 
 ## Project setup
 ```

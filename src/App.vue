@@ -27,7 +27,7 @@ export default {
   name: "App",
   data() {
     return {
-      api_key: "",
+      api_key: "faaf52e17adfa7486c564efabf7d8770",
       base_url: "https://api.openweathermap.org/data/2.5/",
       query: "",
       weather_data: {},
@@ -44,7 +44,7 @@ export default {
             })
             .then(this.setWeather)
         } else {
-          window.alert('You need an OpenWeather API key.')
+          window.alert("You need an OpenWeather API key.")
         }
       }
     },
@@ -69,7 +69,7 @@ body {
 
 main {
   padding-top: 4em;
-  font-size: 1.6em;
+  font-size: 1.7em;
   margin: 0 auto;
   text-align: center;
   max-width: 15em;
@@ -89,7 +89,7 @@ input {
 .search-box .search-bar {
   width: 40%;
   padding: 0.6em;
-  color: #b1b1b1;
+  color: #999999;
   border: none;
   outline: none;
   background: none;
@@ -101,16 +101,16 @@ input {
 .search-box .search-bar:focus {
   width: 100%;
   color: #303030;
-  box-shadow: 0px 0px 24px rgba(0, 0, 0, 0.4);
-  border-radius: 8px;
+  box-shadow: 0px 0px 16px rgba(0, 0, 0, 0.3);
+  border-radius: 6px;
 }
 
 .temp {
-  font-size: 1.5em;
+  font-size: 1.8em;
 }
 
 .humidity {
-  margin-top: 1em;
+  margin-top: 0.8em;
   font-size: 0.6em;
 }
 </style>
