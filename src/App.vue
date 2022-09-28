@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <main>
-      <p>Vue Weather</p>
+      <p>Vue Weather.</p>
       <div class="search-box">
         <input
           type="text"
@@ -9,6 +9,7 @@
           placeholder="Search..."
           v-model="query"
           @keypress="fetchWeather"
+          @focus="$event.target.select()"
         />
       </div>
       <div v-if="typeof weather_data.main != 'undefined'">
@@ -63,13 +64,25 @@ export default {
 }
 
 body {
-  background-color: #bbd8cf;
-  color: #303030;
+  background-color: #aedaca;
+  color: #424242;
+  animation: fadeIn ease 1s;
+  animation-iteration-count: 1;
+  animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+     }
 }
 
 main {
   padding-top: 4em;
-  font-size: 1.7em;
+  font-size: 1.8em;
   margin: 0 auto;
   text-align: center;
   max-width: 15em;
@@ -83,7 +96,7 @@ main {
 
 input {
   font-family: monospace;
-  font-size: 0.9em;
+  font-size: 0.8em;
 }
 
 .search-box .search-bar {
